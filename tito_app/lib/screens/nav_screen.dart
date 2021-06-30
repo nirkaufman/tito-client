@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tito_app/screens/report_screen.dart';
 import 'package:tito_app/screens/screens.dart';
 import 'package:tito_app/widgets/widgets.dart';
 
@@ -8,13 +9,12 @@ class NavScreen extends StatefulWidget {
 }
 
 class _NavScreenState extends State<NavScreen> {
-  final List<Widget> _screens = [HomeScreen(), Scaffold()];
+  final List<Widget> _screens = [HomeScreen(), ReportScreen()];
   final List<IconData> _icons = [Icons.home, Icons.analytics];
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
     return DefaultTabController(
       length: _icons.length,
       child: Scaffold(
