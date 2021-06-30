@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:tito_app/widgets/widgets.dart';
 
 class ReportScreen extends StatefulWidget {
@@ -25,6 +26,13 @@ class _reportScreenState extends State {
           ),
         ),
         centerTitle: false,
+        actions: [
+          IconButton(
+              icon: Icon(MdiIcons.accountCircle),
+              iconSize: 35,
+              color: Colors.white,
+              onPressed: () => print('Go to profile')),
+        ],
       ),
       body: Center(
         child: AspectRatio(

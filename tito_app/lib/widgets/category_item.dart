@@ -2,6 +2,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:tito_app/config/palette.dart';
 import 'package:tito_app/models/models.dart';
+import 'package:tito_app/widgets/start_watch.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -10,12 +11,14 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var www;
+    void onCategoryInactive() {}
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: FlipCard(
         direction: FlipDirection.HORIZONTAL,
         onFlip: () => print('on flip'),
-        onFlipDone: (isDone) => print('is done: ${isDone} '),
+        onFlipDone: (isDone) => isDone ? onCategoryInactive() : null,
         front: Stack(
           alignment: Alignment.center,
           children: [
@@ -93,16 +96,23 @@ class CategoryItem extends StatelessWidget {
                     SizedBox(
                       height: 15.0,
                     ),
-                    Text(
-                      '09:55:33',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   '09:55:33',
+                    //   style: TextStyle(
+                    //       color: Colors.white,
+                    //       fontSize: 30,
+                    //       fontWeight: FontWeight.bold),
+                    // ),
+                    StartWatch(),
                   ],
                 ),
               ),
+            ),
+            Container(
+              height: double.infinity,
+              decoration: BoxDecoration(
+                  gradient: Palette.storyGradient,
+                  borderRadius: BorderRadius.circular(12.0)),
             ),
           ],
         ),
