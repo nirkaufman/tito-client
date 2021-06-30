@@ -9,14 +9,27 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: GridView.count(
-      crossAxisCount: 2,
-      children: List.generate(6, (index) {
-        return CategoryItem(
-          category: categories[index],
-        );
-      }),
-    ));
+    final size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height -
+            kToolbarHeight -
+            kBottomNavigationBarHeight -
+            kTextTabBarHeight -
+            24) /
+        3;
+    final double itemWidth = size.width / 2;
+    return Center(
+      child: Container(
+          child: GridView.count(
+        crossAxisCount: 2,
+        physics: ClampingScrollPhysics(),
+        childAspectRatio: (itemWidth / itemHeight),
+        shrinkWrap: true,
+        children: List.generate(6, (index) {
+          return CategoryItem(
+            category: categories[index],
+          );
+        }),
+      )),
+    );
   }
 }
