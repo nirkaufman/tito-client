@@ -23,14 +23,7 @@ class HomeScreen extends StatelessWidget {
           centerTitle: false,
           floating: true,
         ),
-        SliverPadding(
-          padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
-          sliver: SliverToBoxAdapter(
-            child: Categories(
-              categories: categories,
-            ),
-          ),
-        ),
+        Categories(categories: categories),
       ]),
     );
   }
