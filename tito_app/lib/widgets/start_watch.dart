@@ -44,7 +44,7 @@ class _StartWatchState extends State<StartWatch> {
               child: Text(
                 displayTime,
                 style:
-                    const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
             ),
           ],

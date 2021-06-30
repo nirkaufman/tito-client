@@ -10,13 +10,35 @@ class NavScreen extends StatefulWidget {
   _NavScreenState createState() => _NavScreenState();
 }
 
-class _NavScreenState extends State<NavScreen> {
+class _NavScreenState extends State<NavScreen>
+    with SingleTickerProviderStateMixin {
   final List<Widget> _screens = [HomeScreen(), ReportScreen()];
   final List<NavTab> _tabs = [
     NavTab(index: 0, icon: MdiIcons.home, text: 'Time Track'),
     NavTab(index: 1, icon: Icons.pie_chart, text: 'Report')
   ];
+  late TabController _tabController;
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Create TabController for getting the index of current tab
+    _tabController = TabController(length: _tabs.length, vsync: this);
+
+    _tabController.animation!
+      ..addListener(() {
+        setState(() {
+          _selectedIndex = (_tabController.animation!.value).round();
+        });
+      });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +66,13 @@ class _NavScreenState extends State<NavScreen> {
           ),
           body: TabBarView(
             children: _screens,
+            controller: _tabController,
           ),
           bottomNavigationBar: Container(
             padding: const EdgeInsets.only(bottom: 12.0),
             color: Colors.white,
             child: CustomTabBar(
+              controller: _tabController,
               tabs: _tabs,
               selectedIndex: _selectedIndex,
               onTap: (index) => setState(() => _selectedIndex = index),

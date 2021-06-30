@@ -96,24 +96,17 @@ class CategoryItem extends StatelessWidget {
                     SizedBox(
                       height: 15.0,
                     ),
-                    // Text(
-                    //   '09:55:33',
-                    //   style: TextStyle(
-                    //       color: Colors.white,
-                    //       fontSize: 30,
-                    //       fontWeight: FontWeight.bold),
-                    // ),
                     StartWatch(),
                   ],
                 ),
               ),
             ),
-            Container(
-              height: double.infinity,
-              decoration: BoxDecoration(
-                  gradient: Palette.storyGradient,
-                  borderRadius: BorderRadius.circular(12.0)),
-            ),
+            // Container(
+            //   height: double.infinity,
+            //   decoration: BoxDecoration(
+            //       gradient: Palette.storyGradient,
+            //       borderRadius: BorderRadius.circular(12.0)),
+            // ),
           ],
         ),
       ),

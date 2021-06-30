@@ -6,10 +6,12 @@ class CustomTabBar extends StatelessWidget {
   final List<NavTab> tabs;
   final int selectedIndex;
   final Function(int) onTap;
+  final TabController controller;
   final bool isBottomIndicator;
 
   const CustomTabBar(
       {Key? key,
+      required this.controller,
       required this.tabs,
       required this.selectedIndex,
       required this.onTap,
@@ -38,6 +40,7 @@ class CustomTabBar extends StatelessWidget {
                 ),
               ),
       ),
+      controller: controller,
       tabs: tabs
           .asMap()
           .map((i, e) => MapEntry(
