@@ -13,8 +13,7 @@ class CategoryItem extends StatelessWidget {
         padding: const EdgeInsets.all(18.0),
         child: FlatButton(
           onPressed: () => print('Create Room'),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
           color: Colors.white,
           textColor: Palette.nextBlue,
           child: Column(

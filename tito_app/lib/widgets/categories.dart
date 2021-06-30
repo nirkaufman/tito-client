@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tito_app/config/palette.dart';
 import 'package:tito_app/models/category_model.dart';
-import 'package:tito_app/widgets/category_item.dart';
+import 'package:tito_app/widgets/widgets.dart';
 
 class Categories extends StatelessWidget {
   final List<Category> categories;
@@ -10,19 +9,13 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200.0,
-        mainAxisSpacing: 10.0,
-        crossAxisSpacing: 10.0,
-        childAspectRatio: 1.0,
-      ),
-      delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          return CategoryItem(category: categories[index]);
-        },
-        childCount: categories.length,
-      ),
+    return Container(
+      child: GridView.count(
+        crossAxisCount: 2,
+        children: List.generate(6, (index) {
+          return CategoryItem(category: categories[index],);
+        }),
+      )
     );
   }
 }
