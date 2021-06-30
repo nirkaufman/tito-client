@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:tito_app/models/models.dart';
 import 'package:tito_app/screens/report_screen.dart';
 import 'package:tito_app/screens/screens.dart';
@@ -12,8 +13,8 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [HomeScreen(), ReportScreen()];
   final List<NavTab> _tabs = [
-    NavTab(index: 0, icon: Icons.home, text: 'Home'),
-    NavTab(index: 1, icon: Icons.analytics, text: 'Report')
+    NavTab(index: 0, icon: MdiIcons.home, text: 'Time Track'),
+    NavTab(index: 1, icon: Icons.pie_chart, text: 'Report')
   ];
   int _selectedIndex = 0;
 
@@ -22,6 +23,25 @@ class _NavScreenState extends State<NavScreen> {
     return DefaultTabController(
       length: _tabs.length,
       child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            title: Text(
+              _tabs[_selectedIndex].text,
+              style: const TextStyle(
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+                letterSpacing: -1.2,
+              ),
+            ),
+            centerTitle: false,
+            actions: [
+              IconButton(
+                  icon: Icon(MdiIcons.accountCircle),
+                  iconSize: 35,
+                  color: Colors.white,
+                  onPressed: () => print('Go to profile')),
+            ],
+          ),
           body: TabBarView(
             children: _screens,
           ),
