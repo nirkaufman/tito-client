@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tito_app/screens/home_screen.dart';
+import 'package:tito_app/screens/screens.dart';
 
 import 'config/palette.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Palette.scaffold,
       ),
-      home: HomeScreen(),
+      home: NavScreen(),
     );
   }
 }
