@@ -5,11 +5,13 @@ class Category {
   final String imageUrl;
   final Color color;
   final String name;
+  bool isActive;
 
-  const Category({
+  Category({
     required this.id,
     required this.color,
     required this.imageUrl,
     required this.name,
+    this.isActive = true,
   });
 }

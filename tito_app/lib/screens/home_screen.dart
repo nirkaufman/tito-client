@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(0, 215, 255, 1),
         elevation: 0,
         title: Text(
           'Time Track',
@@ -18,7 +19,12 @@ class HomeScreen extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: Categories(categories: categories),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: Categories(
+          categories: categories,
+        ),
+      ),
     );
   }
 }
