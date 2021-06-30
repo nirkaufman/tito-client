@@ -10,29 +10,28 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: const EdgeInsets.all(10.0),
         child: FlatButton(
           onPressed: () => print('Create Room'),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-          color: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          color: category.color,
           textColor: Palette.nextBlue,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ShaderMask(
-                  shaderCallback: (rect) =>
-                      Palette.createRoomGradient.createShader(rect),
-                  child: Icon(
-                    category.icon,
-                    size: 50.0,
-                    color: Colors.white,
-                  )),
-              const SizedBox(
-                width: 4.0,
-              ),
-              Text(
-                category.name,
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              Container(
+                  height: 150,
+                  child: Image.asset(category.imageUrl, fit: BoxFit.fill)),
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Text(
+                  category.name,
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
               )
             ],
           ),
