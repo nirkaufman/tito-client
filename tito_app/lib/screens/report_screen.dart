@@ -13,88 +13,103 @@ class _reportScreenState extends State {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AspectRatio(
-        aspectRatio: 1.3,
-        child: Card(
-          color: Colors.white,
-          child: Row(
-            children: <Widget>[
-              const SizedBox(
-                height: 18,
-              ),
-              Expanded(
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: PieChart(
-                    PieChartData(
-                        pieTouchData:
-                            PieTouchData(touchCallback: (pieTouchResponse) {
-                          setState(() {
-                            final desiredTouch = pieTouchResponse.touchInput
-                                    is! PointerExitEvent &&
-                                pieTouchResponse.touchInput is! PointerUpEvent;
-                            if (desiredTouch &&
-                                pieTouchResponse.touchedSection != null) {
-                              touchedIndex = pieTouchResponse
-                                  .touchedSection!.touchedSectionIndex;
-                            } else {
-                              touchedIndex = -1;
-                            }
-                          });
-                        }),
-                        borderData: FlBorderData(
-                          show: false,
-                        ),
-                        sectionsSpace: 0,
-                        centerSpaceRadius: 40,
-                        sections: showingSections()),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(
+          'Report',
+          style: const TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+            letterSpacing: -1.2,
+          ),
+        ),
+        centerTitle: false,
+      ),
+      body: Center(
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Card(
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                const SizedBox(
+                  height: 18,
+                ),
+                Expanded(
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: PieChart(
+                      PieChartData(
+                          pieTouchData:
+                              PieTouchData(touchCallback: (pieTouchResponse) {
+                            setState(() {
+                              final desiredTouch = pieTouchResponse.touchInput
+                                      is! PointerExitEvent &&
+                                  pieTouchResponse.touchInput
+                                      is! PointerUpEvent;
+                              if (desiredTouch &&
+                                  pieTouchResponse.touchedSection != null) {
+                                touchedIndex = pieTouchResponse
+                                    .touchedSection!.touchedSectionIndex;
+                              } else {
+                                touchedIndex = -1;
+                              }
+                            });
+                          }),
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          sectionsSpace: 0,
+                          centerSpaceRadius: 40,
+                          sections: showingSections()),
+                    ),
                   ),
                 ),
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const <Widget>[
-                  Indicator(
-                    color: Color(0xff0293ee),
-                    text: 'First',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Color(0xfff8b250),
-                    text: 'Second',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Color(0xff845bef),
-                    text: 'Third',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Color(0xff13d38e),
-                    text: 'Fourth',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 18,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                width: 28,
-              ),
-            ],
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const <Widget>[
+                    Indicator(
+                      color: Color(0xff0293ee),
+                      text: 'First',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Indicator(
+                      color: Color(0xfff8b250),
+                      text: 'Second',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Indicator(
+                      color: Color(0xff845bef),
+                      text: 'Third',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Indicator(
+                      color: Color(0xff13d38e),
+                      text: 'Fourth',
+                      isSquare: true,
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 28,
+                ),
+              ],
+            ),
           ),
         ),
       ),
