@@ -21,8 +21,7 @@ class CategoryItem extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: FlipCard(
           direction: FlipDirection.HORIZONTAL,
-          onFlip: () =>
-              this.category.isActive ? () => this.toggle(category) : null,
+          onFlip: this.category.isActive ? () => this.toggle(category) : null,
           front: Stack(
             alignment: Alignment.center,
             children: [

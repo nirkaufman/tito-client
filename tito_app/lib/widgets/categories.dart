@@ -13,10 +13,12 @@ class Categories extends StatefulWidget {
 
 class _CategoriesState extends State<Categories> {
   toggleCategory(Category category) {
-    print('object');
     this.setState(() {
+      bool anyActive =
+          widget.categories.any((element) => element.isActive == false);
+
       widget.categories.forEach((element) {
-        if (element.id != category.id) {
+        if (element.id != category.id && !anyActive) {
           element.isActive = false;
         } else {
           element.isActive = true;
