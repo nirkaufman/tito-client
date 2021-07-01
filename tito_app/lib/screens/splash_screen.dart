@@ -23,7 +23,7 @@ class SplashScreenState extends State<SplashScreen>
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(NAV_SCREEN);
+    Navigator.of(context).pushReplacementNamed(ONBOARDING);
   }
 
   @override
@@ -71,7 +71,7 @@ class SplashScreenState extends State<SplashScreen>
               new SizedBox(
                 width: double.infinity,
                 child: TextLiquidFill(
-                  text: 'Time Track',
+                  text: 'TapInTapOut',
                   waveColor: Colors.white,
                   loadDuration: const Duration(seconds: 2),
                   boxBackgroundColor: Palette.nextBlue,
