@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
         primaryTextTheme: TextTheme(
           headline6: TextStyle(color: Colors.white),
         ),
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white), // 1
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Palette.scaffold,
       ),

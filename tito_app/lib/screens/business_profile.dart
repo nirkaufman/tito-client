@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:tito_app/config/palette.dart';
 
 class BusinessProfile extends StatefulWidget {
   @override
@@ -39,12 +40,12 @@ class MapScreenState extends State<BusinessProfile>
               Column(
                 children: <Widget>[
                   new Container(
-                    height: 250.0,
+                    height: 300.0,
                     color: Colors.white,
                     child: new Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(top: 20.0),
+                          padding: EdgeInsets.only(top: 60.0),
                           child:
                               new Stack(fit: StackFit.loose, children: <Widget>[
                             new Row(
@@ -71,7 +72,7 @@ class MapScreenState extends State<BusinessProfile>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     new CircleAvatar(
-                                      backgroundColor: Colors.red,
+                                      backgroundColor: Palette.nextBlue,
                                       radius: 25.0,
                                       child: new Icon(
                                         Icons.camera_alt,
@@ -218,7 +219,7 @@ class MapScreenState extends State<BusinessProfile>
 
   Widget _getActionButtons() {
     return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 120.0),
       child: new Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -227,19 +228,24 @@ class MapScreenState extends State<BusinessProfile>
             child: Padding(
               padding: EdgeInsets.only(right: 10.0),
               child: Container(
+                  height: 45,
                   child: new RaisedButton(
-                child: new Text("Save"),
-                textColor: Colors.white,
-                color: Colors.green,
-                onPressed: () {
-                  setState(() {
-                    _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                  });
-                },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
-              )),
+                    child: new Text(
+                      "Save",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    textColor: Colors.white,
+                    color: Palette.nextBlue,
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
+                    },
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                  )),
             ),
             flex: 2,
           ),
@@ -247,19 +253,26 @@ class MapScreenState extends State<BusinessProfile>
             child: Padding(
               padding: EdgeInsets.only(left: 10.0),
               child: Container(
-                  child: new RaisedButton(
-                child: new Text("Cancel"),
-                textColor: Colors.white,
-                color: Colors.red,
-                onPressed: () {
-                  setState(() {
-                    _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                  });
-                },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
-              )),
+                  height: 45,
+                  child: new OutlineButton(
+                    child: new Text(
+                      "Cancel",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    textColor: Palette.nextBlue,
+                    borderSide: BorderSide(color: Palette.nextBlue),
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
+                    },
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                  )),
             ),
             flex: 2,
           ),
@@ -271,7 +284,7 @@ class MapScreenState extends State<BusinessProfile>
   Widget _getEditIcon() {
     return new GestureDetector(
       child: new CircleAvatar(
-        backgroundColor: Colors.red,
+        backgroundColor: Palette.nextBlue,
         radius: 14.0,
         child: new Icon(
           Icons.edit,
