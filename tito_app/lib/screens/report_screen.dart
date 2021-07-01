@@ -5,9 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:tito_app/data/data.dart';
 import 'package:tito_app/models/category_model.dart';
 
-
 class ReportScreen extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => ReportScreenState();
 }
@@ -16,11 +14,11 @@ class ReportScreenState extends State {
   int touchedIndex = 0;
   CategoryModel selectedCategory = categories[0];
 
-
   setSelectedCategory(pieTouchResponse) {
     print(pieTouchResponse.touchedSection!.touchedSectionIndex);
     setState(() {
-      this.selectedCategory = categories[pieTouchResponse.touchedSection!.touchedSectionIndex];
+      this.selectedCategory =
+          categories[pieTouchResponse.touchedSection!.touchedSectionIndex];
     });
   }
 
@@ -43,12 +41,14 @@ class ReportScreenState extends State {
                     aspectRatio: 1,
                     child: PieChart(
                       PieChartData(
-                          pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                          pieTouchData:
+                              PieTouchData(touchCallback: (pieTouchResponse) {
                             setSelectedCategory(pieTouchResponse);
                             setState(() {
-                              final desiredTouch =
-                                  pieTouchResponse.touchInput is! PointerExitEvent &&
-                                      pieTouchResponse.touchInput is! PointerUpEvent;
+                              final desiredTouch = pieTouchResponse.touchInput
+                                      is! PointerExitEvent &&
+                                  pieTouchResponse.touchInput
+                                      is! PointerUpEvent;
                               if (desiredTouch &&
                                   pieTouchResponse.touchedSection != null) {
                                 touchedIndex = pieTouchResponse
@@ -77,17 +77,18 @@ class ReportScreenState extends State {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
-                          'You spend 40% of your time on ${selectedCategory.name}',
-                          style: TextStyle(
-                            fontSize: 20
-                          ),
+                        'You spend 40% of your time on ${selectedCategory.name}',
+                        style: TextStyle(fontSize: 20),
                       ),
                     ),
                     Container(
                       height: 150,
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage(selectedCategory.imageUrl))
-                      ),
+                        image: DecorationImage(
+                        image: AssetImage(
+                          selectedCategory.imageUrl,
+                        ),
+                      )),
                     )
                   ],
                 ),
@@ -227,7 +228,6 @@ class ReportScreenState extends State {
             badgePositionPercentageOffset: .98,
           );
 
-
         default:
           throw 'Oh no';
       }
@@ -272,12 +272,10 @@ class _Badge extends StatelessWidget {
       child: Center(
         child: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                imagePath,
-              )
-            )
-          ),
+              image: DecorationImage(
+                  image: AssetImage(
+            imagePath,
+          ))),
         ),
       ),
     );
