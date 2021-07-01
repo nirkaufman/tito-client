@@ -7,12 +7,10 @@ class StartWatchTimer extends StatelessWidget {
   );
 
   startTimer() {
-    print('startTimer');
     this.stopWatchTimer.onExecute.add(StopWatchExecute.start);
   }
 
   stopTimer() async {
-    print('stopTimer');
     await stopWatchTimer.dispose();
   }
 

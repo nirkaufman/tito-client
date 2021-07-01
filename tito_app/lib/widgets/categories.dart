@@ -25,7 +25,6 @@ class _CategoriesState extends State<Categories> {
         }
       });
     });
-    print(category.name);
   }
 
   @override

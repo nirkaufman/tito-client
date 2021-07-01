@@ -74,7 +74,7 @@ class OnBoardingScreen extends StatelessWidget {
           onSkip: () => goToHome(context),
           next: Icon(Icons.arrow_forward),
           dotsDecorator: getDotDecoration(),
-          onChange: (index) => print('Page $index selected'),
+          onChange: (index) => {},
           globalBackgroundColor: Theme.of(context).primaryColor,
           skipFlex: 0,
           nextFlex: 0,

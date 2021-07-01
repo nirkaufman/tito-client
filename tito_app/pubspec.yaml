@@ -88,6 +88,11 @@ flutter:
     - family: Alpina
       fonts:
         - asset: assets/fonts/GTAlpinaRegular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/RobotoBlack.ttf
+          weight: 900
+          
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

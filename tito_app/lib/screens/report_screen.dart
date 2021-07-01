@@ -15,7 +15,6 @@ class ReportScreenState extends State {
   CategoryModel selectedCategory = categories[0];
 
   setSelectedCategory(pieTouchResponse) {
-    print(pieTouchResponse.touchedSection!.touchedSectionIndex);
     setState(() {
       this.selectedCategory =
           categories[pieTouchResponse.touchedSection!.touchedSectionIndex];
@@ -272,9 +271,13 @@ class _Badge extends StatelessWidget {
       child: Center(
         child: Container(
           decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                  image: AssetImage(imagePath,),),),
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(
+                imagePath,
+              ),
+            ),
+          ),
         ),
       ),
     );

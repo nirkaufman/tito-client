@@ -89,7 +89,8 @@ class SplashScreenState extends State<SplashScreen>
                   boxBackgroundColor: Palette.grey,
                   textStyle: TextStyle(
                       fontSize: 55.0,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w900,
                       color: Palette.nextBlue),
                 ),
               ),
