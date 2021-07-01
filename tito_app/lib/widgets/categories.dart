@@ -14,7 +14,7 @@ class Categories extends StatelessWidget {
             kToolbarHeight -
             kBottomNavigationBarHeight -
             kTextTabBarHeight -
-            24) /
+            50) /
         3;
     final double itemWidth = size.width / 2;
     return Center(

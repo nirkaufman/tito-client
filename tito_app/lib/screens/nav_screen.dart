@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:tito_app/models/models.dart';
+import 'package:tito_app/screens/business_profile.dart';
 import 'package:tito_app/screens/report_screen.dart';
 import 'package:tito_app/screens/screens.dart';
 import 'package:tito_app/widgets/widgets.dart';
@@ -40,13 +41,20 @@ class _NavScreenState extends State<NavScreen>
     super.dispose();
   }
 
+  void goToBusinessProfile() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BusinessProfile()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: _tabs.length,
       child: Scaffold(
           appBar: AppBar(
-            elevation: 0,
+            elevation: 2,
             title: Text(
               _tabs[_selectedIndex].text,
               style: const TextStyle(
@@ -61,7 +69,7 @@ class _NavScreenState extends State<NavScreen>
                   icon: Icon(MdiIcons.accountCircle),
                   iconSize: 35,
                   color: Colors.white,
-                  onPressed: () => print('Go to profile')),
+                  onPressed: goToBusinessProfile),
             ],
           ),
           body: TabBarView(
