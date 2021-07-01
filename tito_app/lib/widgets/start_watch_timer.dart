@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-class StartWatch extends StatefulWidget {
-  @override
-  _StartWatchState createState() => _StartWatchState();
-}
-
-class _StartWatchState extends State<StartWatch> {
-  final _isHours = true;
-
+class StartWatchTimer extends StatelessWidget {
   final StopWatchTimer stopWatchTimer = StopWatchTimer(
     mode: StopWatchMode.countUp,
   );
 
-  @override
-  void initState() {
-    super.initState();
-
-    /// Can be set preset time. This case is "00:01.23".
-    // _stopWatchTimer.setPresetTime(mSec: 1234);
-    stopWatchTimer.onExecute.add(StopWatchExecute.start);
+  startTimer() {
+    print('startTimer');
+    this.stopWatchTimer.onExecute.add(StopWatchExecute.start);
   }
 
-  @override
-  void dispose() async {
-    super.dispose();
+  stopTimer() async {
+    print('stopTimer');
     await stopWatchTimer.dispose();
   }
 
@@ -36,7 +24,7 @@ class _StartWatchState extends State<StartWatch> {
       builder: (context, snap) {
         final value = snap.data!;
         final displayTime = StopWatchTimer.getDisplayTime(value,
-            hours: _isHours, milliSecond: false);
+            hours: true, milliSecond: false);
         return Column(
           children: <Widget>[
             Padding(
