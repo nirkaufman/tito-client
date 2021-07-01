@@ -29,7 +29,7 @@ class ReportScreenState extends State {
       body: Container(
         padding: EdgeInsets.only(top: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
               child: AspectRatio(
@@ -81,15 +81,6 @@ class ReportScreenState extends State {
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
-                    Container(
-                      height: 150,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                        image: AssetImage(
-                          selectedCategory.imageUrl,
-                        ),
-                      )),
-                    )
                   ],
                 ),
               ),
@@ -105,7 +96,7 @@ class ReportScreenState extends State {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 20.0 : 16.0;
       final radius = isTouched ? 110.0 : 100.0;
-      final widgetSize = isTouched ? 55.0 : 40.0;
+      final widgetSize = isTouched ? 66.0 : 50.0;
 
       switch (i) {
         case 0:
@@ -273,9 +264,8 @@ class _Badge extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(
-            imagePath,
-          ))),
+                fit: BoxFit.fill,
+                  image: AssetImage(imagePath,),),),
         ),
       ),
     );
