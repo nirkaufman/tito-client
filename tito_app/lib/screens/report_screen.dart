@@ -29,7 +29,7 @@ class ReportScreenState extends State {
       body: Container(
         padding: EdgeInsets.only(top: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Flexible(
               child: AspectRatio(
@@ -77,8 +77,17 @@ class ReportScreenState extends State {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
-                        'You spend 40% of your time on ${selectedCategory.name}',
+                        'You spend \n40% of your time on \n${selectedCategory.name}',
+                        style: TextStyle(fontSize: 30),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        'Check out how other businesses \n(just like yours) spend their time',
                         style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
