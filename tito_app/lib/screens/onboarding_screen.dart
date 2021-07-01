@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:tito_app/config/constants.dart';
 import 'package:tito_app/data/tito_colors.dart';
 import 'package:tito_app/screens/screens.dart';
 import 'package:tito_app/widgets/widgets.dart';
@@ -85,9 +86,8 @@ class OnBoardingScreen extends StatelessWidget {
         ),
       );
 
-  void goToHome(context) => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => NavScreen()),
-      );
+  void goToHome(context) => Navigator.of(context)
+      .pushNamedAndRemoveUntil(BUSINESS_PROFILE, (route) => false);
 
   Widget buildImage(String path) =>
       Center(child: Image.asset(path, width: 350));
