@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       home: new SplashScreen(),
       routes: <String, WidgetBuilder>{
+        ONBOARDING: (BuildContext context) => new OnBoardingScreen(),
         NAV_SCREEN: (BuildContext context) => new NavScreen(),
       },
     );
