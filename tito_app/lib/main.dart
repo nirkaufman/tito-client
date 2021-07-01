@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tito_app/config/constants.dart';
 import 'package:tito_app/screens/screens.dart';
 
 import 'config/palette.dart';
@@ -24,7 +25,10 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Palette.scaffold,
       ),
-      home: NavScreen(),
+      home: new SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        NAV_SCREEN: (BuildContext context) => new NavScreen(),
+      },
     );
   }
 }
