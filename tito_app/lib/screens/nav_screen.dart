@@ -15,8 +15,16 @@ class _NavScreenState extends State<NavScreen>
     with SingleTickerProviderStateMixin {
   final List<Widget> _screens = [HomeScreen(), ReportScreen()];
   final List<NavTab> _tabs = [
-    NavTab(index: 0, icon: MdiIcons.home, text: 'Time Track'),
-    NavTab(index: 1, icon: Icons.pie_chart, text: 'Report')
+    NavTab(
+        index: 0,
+        icon: MdiIcons.home,
+        text: 'TapInTapOut',
+        title: 'TapInTapOut'),
+    NavTab(
+        index: 1,
+        icon: Icons.pie_chart,
+        text: 'Report',
+        title: 'How did I spend my time?')
   ];
   late TabController _tabController;
   int _selectedIndex = 0;
@@ -56,9 +64,9 @@ class _NavScreenState extends State<NavScreen>
           appBar: AppBar(
             elevation: 2,
             title: Text(
-              _tabs[_selectedIndex].text,
+              _tabs[_selectedIndex].title,
               style: const TextStyle(
-                fontSize: 28.0,
+                fontSize: 25.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -1.2,
               ),

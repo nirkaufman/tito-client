@@ -1,3 +1,4 @@
 String ANIMATED_SPLASH = '/SplashScreen',
     BUSINESS_PROFILE = '/BusinessProfile',
-    NAV_SCREEN = '/NavScreen';
+    NAV_SCREEN = '/NavScreen',
+    ONBOARDING = '/OnBoarding';
