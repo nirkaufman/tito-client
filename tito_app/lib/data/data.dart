@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tito_app/data/tito_colors.dart';
 import 'package:tito_app/models/models.dart';
 
 final User currentUser = User(
@@ -10,32 +11,32 @@ final User currentUser = User(
 final List<Category> categories = [
   Category(
       id: 1,
-      imageUrl: 'assets/images/CustomPolicy-bw.png',
-      color: Color.fromRGBO(0, 215, 255, 1),
-      name: 'Work'),
+      imageUrl: 'assets/images/actual_buisness_work.png',
+      color: TitoColors.blue,
+      name: 'Actual Business Work'),
   Category(
       id: 2,
-      imageUrl: 'assets/images/AppleTree-bw.png',
-      color: Color.fromRGBO(255, 50, 160, 1),
-      name: 'Free time'),
+      imageUrl: 'assets/images/talking_customers.png',
+      color: TitoColors.pink,
+      name: 'Talking with Customers'),
   Category(
       id: 3,
-      imageUrl: 'assets/images/LOB_ToolsEquipment-bw.png',
-      color: Color.fromRGBO(0, 230, 80, 1),
-      name: 'Family'),
+      imageUrl: 'assets/images/marketing.png',
+      color: TitoColors.green,
+      name: 'Marketing (meetings, social)'),
   Category(
       id: 4,
-      imageUrl: 'assets/images/Retail-bw.png',
-      color: Color.fromRGBO(255, 65, 0, 1),
-      name: 'Marketing'),
+      imageUrl: 'assets/images/learning.png',
+      color: TitoColors.red,
+      name: 'Learning/Exploration'),
   Category(
       id: 5,
-      imageUrl: 'assets/images/Questions_SignUp.png',
-      color: Color.fromRGBO(220, 240, 0, 1),
-      name: 'Driving'),
+      imageUrl: 'assets/images/planing.png',
+      color: TitoColors.yellow,
+      name: 'Planing'),
   Category(
       id: 6,
-      imageUrl: 'assets/images/TalkToAgent-bw.png',
-      color: Color.fromRGBO(172, 0, 231, 1),
-      name: 'Living')
+      imageUrl: 'assets/images/other_activates.png',
+      color: TitoColors.purple,
+      name: 'Other Activates')
 ];

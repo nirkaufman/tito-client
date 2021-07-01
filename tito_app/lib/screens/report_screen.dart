@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tito_app/data/tito_colors.dart';
 
 /// Icons by svgrepo.com (https://www.svgrepo.com/collection/job-and-professions-3/)
 class ReportScreen extends StatefulWidget {
@@ -54,6 +55,8 @@ class ReportScreenState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
+
+
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 20.0 : 16.0;
@@ -63,7 +66,7 @@ class ReportScreenState extends State {
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: const Color(0xff0293ee),
+            color: TitoColors.purple,
             value: 40,
             title: '40%',
             radius: radius,
@@ -74,13 +77,13 @@ class ReportScreenState extends State {
             badgeWidget: _Badge(
               'assets/ophthalmology-svgrepo-com.svg',
               size: widgetSize,
-              borderColor: const Color(0xff0293ee),
+              borderColor: TitoColors.purple,
             ),
             badgePositionPercentageOffset: .98,
           );
         case 1:
           return PieChartSectionData(
-            color: const Color(0xfff8b250),
+            color: TitoColors.yellow,
             value: 30,
             title: '30%',
             radius: radius,
@@ -91,13 +94,13 @@ class ReportScreenState extends State {
             badgeWidget: _Badge(
               'assets/librarian-svgrepo-com.svg',
               size: widgetSize,
-              borderColor: const Color(0xfff8b250),
+              borderColor: TitoColors.yellow,
             ),
             badgePositionPercentageOffset: .98,
           );
         case 2:
           return PieChartSectionData(
-            color: const Color(0xff845bef),
+            color:TitoColors.green,
             value: 16,
             title: '16%',
             radius: radius,
@@ -108,13 +111,13 @@ class ReportScreenState extends State {
             badgeWidget: _Badge(
               'assets/fitness-svgrepo-com.svg',
               size: widgetSize,
-              borderColor: const Color(0xff845bef),
+              borderColor: TitoColors.green,
             ),
             badgePositionPercentageOffset: .98,
           );
         case 3:
           return PieChartSectionData(
-            color: const Color(0xff13d38e),
+            color: TitoColors.pink,
             value: 15,
             title: '15%',
             radius: radius,
@@ -125,7 +128,7 @@ class ReportScreenState extends State {
             badgeWidget: _Badge(
               'assets/worker-svgrepo-com.svg',
               size: widgetSize,
-              borderColor: const Color(0xff13d38e),
+              borderColor: TitoColors.pink,
             ),
             badgePositionPercentageOffset: .98,
           );
