@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:tito_app/config/constants.dart';
 import 'package:tito_app/data/tito_colors.dart';
 import 'package:tito_app/screens/screens.dart';
 import 'package:tito_app/widgets/widgets.dart';
@@ -30,14 +31,39 @@ class OnBoardingScreen extends StatelessWidget {
             ),
             PageViewModel(
               title:
-                  'Monitor your time for 1 week (or more!) and see how other businesses (like yours) spend their time on average',
+                  'Monitor your time for 1 week (or more) and see how other businesses (like yours) spend their time on average',
               body: '',
-              footer: ButtonWidget(
-                text: 'I\'m ready!',
-                onClicked: () => goToHome(context),
-              ),
               image: buildImage('assets/images/onboarding_4.png'),
               decoration: getPageDecoration(TitoColors.purple),
+            ),
+            PageViewModel(
+              titleWidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'All you have to do is to TapIn when you start your activity and to TapOut when you finish',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    'You will be than able to see how your time distributes between the different activities you do',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+              body: '',
+              image: buildImage('assets/images/onboarding_5.png'),
+              decoration: getPageDecoration(TitoColors.blue),
             ),
           ],
           done: Text('I\'m ready!',
@@ -60,9 +86,8 @@ class OnBoardingScreen extends StatelessWidget {
         ),
       );
 
-  void goToHome(context) => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => NavScreen()),
-      );
+  void goToHome(context) => Navigator.of(context)
+      .pushNamedAndRemoveUntil(BUSINESS_PROFILE, (route) => false);
 
   Widget buildImage(String path) =>
       Center(child: Image.asset(path, width: 350));
@@ -79,7 +104,7 @@ class OnBoardingScreen extends StatelessWidget {
 
   PageDecoration getPageDecoration(Color pageColor) => PageDecoration(
         titleTextStyle: TextStyle(
-            fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
         bodyTextStyle: TextStyle(fontSize: 20, color: Colors.white),
         descriptionPadding: EdgeInsets.all(16).copyWith(bottom: 0),
         imagePadding: EdgeInsets.all(24),

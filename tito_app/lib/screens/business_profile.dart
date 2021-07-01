@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:tito_app/config/constants.dart';
 import 'package:tito_app/config/palette.dart';
+import 'package:tito_app/screens/nav_screen.dart';
 
 class BusinessProfile extends StatefulWidget {
   @override
@@ -9,7 +11,7 @@ class BusinessProfile extends StatefulWidget {
 
 class MapScreenState extends State<BusinessProfile>
     with SingleTickerProviderStateMixin {
-  bool _status = true;
+  bool _status = false;
   final FocusNode myFocusNode = FocusNode();
 
   @override
@@ -40,12 +42,12 @@ class MapScreenState extends State<BusinessProfile>
               Column(
                 children: <Widget>[
                   new Container(
-                    height: 300.0,
+                    height: 190.0,
                     color: Colors.white,
                     child: new Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(top: 60.0),
+                          padding: EdgeInsets.only(top: 40.0),
                           child:
                               new Stack(fit: StackFit.loose, children: <Widget>[
                             new Row(
@@ -107,7 +109,7 @@ class MapScreenState extends State<BusinessProfile>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Business Information',
+                                        'About you',
                                         style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold),
@@ -136,7 +138,7 @@ class MapScreenState extends State<BusinessProfile>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Business Name',
+                                        'Your name',
                                         style: TextStyle(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.bold),
@@ -154,7 +156,7 @@ class MapScreenState extends State<BusinessProfile>
                                   new Flexible(
                                     child: new TextField(
                                       decoration: const InputDecoration(
-                                        hintText: "Enter Your Business Name",
+                                        hintText: "Enter Your Name",
                                       ),
                                       enabled: !_status,
                                       autofocus: !_status,
@@ -198,6 +200,80 @@ class MapScreenState extends State<BusinessProfile>
                                   ),
                                 ],
                               )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'State',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                        hintText: "Enter Your State",
+                                      ),
+                                      enabled: !_status,
+                                      autofocus: !_status,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Email',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                        hintText: "Enter Your Email",
+                                      ),
+                                      enabled: !_status,
+                                      autofocus: !_status,
+                                    ),
+                                  ),
+                                ],
+                              )),
                           !_status ? _getActionButtons() : new Container(),
                         ],
                       ),
@@ -217,9 +293,13 @@ class MapScreenState extends State<BusinessProfile>
     super.dispose();
   }
 
+  goToHome() {
+    Navigator.of(context).pushNamedAndRemoveUntil(NAV_SCREEN, (route) => false);
+  }
+
   Widget _getActionButtons() {
     return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 120.0),
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 80.0),
       child: new Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -237,39 +317,7 @@ class MapScreenState extends State<BusinessProfile>
                     ),
                     textColor: Colors.white,
                     color: Palette.nextBlue,
-                    onPressed: () {
-                      setState(() {
-                        _status = true;
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                      });
-                    },
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(20.0)),
-                  )),
-            ),
-            flex: 2,
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Container(
-                  height: 45,
-                  child: new OutlineButton(
-                    child: new Text(
-                      "Cancel",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    textColor: Palette.nextBlue,
-                    borderSide: BorderSide(color: Palette.nextBlue),
-                    onPressed: () {
-                      setState(() {
-                        _status = true;
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                      });
-                    },
+                    onPressed: () => goToHome(),
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(20.0)),
                   )),

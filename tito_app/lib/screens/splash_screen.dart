@@ -46,7 +46,7 @@ class SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.nextBlue,
+      backgroundColor: Palette.grey,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -56,12 +56,24 @@ class SplashScreenState extends State<SplashScreen>
             children: <Widget>[
               Padding(
                   padding: EdgeInsets.only(bottom: 30.0),
-                  child: Text(
-                    'version: 1.0',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black45,
-                        fontWeight: FontWeight.bold),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Powered By',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black45,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Image.asset(
+                        'assets/images/next_logo.png',
+                        width: 100,
+                      ),
+                    ],
                   ))
             ],
           ),
@@ -72,13 +84,13 @@ class SplashScreenState extends State<SplashScreen>
                 width: double.infinity,
                 child: TextLiquidFill(
                   text: 'TapInTapOut',
-                  waveColor: Colors.white,
+                  waveColor: Palette.nextBlue,
                   loadDuration: const Duration(seconds: 2),
-                  boxBackgroundColor: Palette.nextBlue,
+                  boxBackgroundColor: Palette.grey,
                   textStyle: TextStyle(
                       fontSize: 55.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: Palette.nextBlue),
                 ),
               ),
             ],
