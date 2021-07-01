@@ -5,6 +5,8 @@ class Palette {
 
   static const Color nextBlue = Color.fromRGBO(0, 215, 255, 1);
 
+  static const Color grey = Color.fromRGBO(248, 249, 250, 1);
+
   static const LinearGradient createRoomGradient = LinearGradient(
     colors: [Color(0xFF496AE1), Color(0xFFCE48B1)],
   );

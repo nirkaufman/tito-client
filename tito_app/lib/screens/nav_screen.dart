@@ -15,11 +15,7 @@ class _NavScreenState extends State<NavScreen>
     with SingleTickerProviderStateMixin {
   final List<Widget> _screens = [HomeScreen(), ReportScreen()];
   final List<NavTab> _tabs = [
-    NavTab(
-        index: 0,
-        icon: MdiIcons.home,
-        text: 'TapInTapOut',
-        title: 'TapInTapOut'),
+    NavTab(index: 0, icon: MdiIcons.home, text: 'Home', title: 'TapInTapOut'),
     NavTab(
         index: 1,
         icon: Icons.pie_chart,
