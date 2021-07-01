@@ -20,6 +20,7 @@ class CategoryItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: FlipCard(
+          flipOnTouch: this.category.isActive,
           direction: FlipDirection.HORIZONTAL,
           onFlip: this.category.isActive ? () => this.toggle(category) : null,
           front: Stack(
