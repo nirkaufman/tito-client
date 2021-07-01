@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Tito',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Alpina',
         primaryColor: Palette.nextBlue,
         primaryTextTheme: TextTheme(
           headline6: TextStyle(color: Colors.white),
