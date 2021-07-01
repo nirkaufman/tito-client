@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Category {
+class CategoryModel {
   final int id;
   final String imageUrl;
   final Color color;
   final String name;
   bool isActive;
 
-  Category({
+  CategoryModel({
     required this.id,
     required this.color,
     required this.imageUrl,

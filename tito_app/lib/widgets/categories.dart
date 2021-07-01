@@ -3,7 +3,7 @@ import 'package:tito_app/models/category_model.dart';
 import 'package:tito_app/widgets/widgets.dart';
 
 class Categories extends StatefulWidget {
-  final List<Category> categories;
+  final List<CategoryModel> categories;
 
   const Categories({Key? key, required this.categories}) : super(key: key);
 
@@ -12,7 +12,7 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  toggleCategory(Category category) {
+  toggleCategory(CategoryModel category) {
     this.setState(() {
       bool anyActive =
           widget.categories.any((element) => element.isActive == false);

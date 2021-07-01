@@ -4,7 +4,7 @@ import 'package:tito_app/models/models.dart';
 import 'package:tito_app/widgets/widgets.dart';
 
 class CategoryItem extends StatelessWidget {
-  final Category category;
+  final CategoryModel category;
   final Function toggle;
 
   const CategoryItem({Key? key, required this.category, required this.toggle})

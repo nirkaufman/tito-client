@@ -2,62 +2,105 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tito_app/data/tito_colors.dart';
+import 'package:tito_app/data/data.dart';
+import 'package:tito_app/models/category_model.dart';
 
-/// Icons by svgrepo.com (https://www.svgrepo.com/collection/job-and-professions-3/)
+
 class ReportScreen extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => ReportScreenState();
 }
 
 class ReportScreenState extends State {
   int touchedIndex = 0;
+  CategoryModel selectedCategory = categories[0];
+
+
+  setSelectedCategory(pieTouchResponse) {
+    print(pieTouchResponse.touchedSection!.touchedSectionIndex);
+    setState(() {
+      this.selectedCategory = categories[pieTouchResponse.touchedSection!.touchedSectionIndex];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: AspectRatio(
-        aspectRatio: 1.3,
-        child: Card(
-          elevation: 0,
-          color: Colors.white,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: PieChart(
-              PieChartData(
-                  pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                    setState(() {
-                      final desiredTouch =
-                          pieTouchResponse.touchInput is! PointerExitEvent &&
-                              pieTouchResponse.touchInput is! PointerUpEvent;
-                      if (desiredTouch &&
-                          pieTouchResponse.touchedSection != null) {
-                        touchedIndex = pieTouchResponse
-                            .touchedSection!.touchedSectionIndex;
-                      } else {
-                        touchedIndex = -1;
-                      }
-                    });
-                  }),
-                  borderData: FlBorderData(
-                    show: false,
+      body: Container(
+        padding: EdgeInsets.only(top: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Flexible(
+              child: AspectRatio(
+                aspectRatio: 1.3,
+                child: Card(
+                  elevation: 0,
+                  color: Colors.white,
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: PieChart(
+                      PieChartData(
+                          pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                            setSelectedCategory(pieTouchResponse);
+                            setState(() {
+                              final desiredTouch =
+                                  pieTouchResponse.touchInput is! PointerExitEvent &&
+                                      pieTouchResponse.touchInput is! PointerUpEvent;
+                              if (desiredTouch &&
+                                  pieTouchResponse.touchedSection != null) {
+                                touchedIndex = pieTouchResponse
+                                    .touchedSection!.touchedSectionIndex;
+                              } else {
+                                touchedIndex = -1;
+                              }
+                            });
+                          }),
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          sectionsSpace: 2,
+                          centerSpaceRadius: 40,
+                          sections: showingSections()),
+                    ),
                   ),
-                  sectionsSpace: 0,
-                  centerSpaceRadius: 0,
-                  sections: showingSections()),
+                ),
+              ),
             ),
-          ),
+            Flexible(
+              child: Container(
+                padding: EdgeInsets.only(top: 50),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                          'You spend 40% of your time on ${selectedCategory.name}',
+                          style: TextStyle(
+                            fontSize: 20
+                          ),
+                      ),
+                    ),
+                    Container(
+                      height: 150,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(image: AssetImage(selectedCategory.imageUrl))
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
   }
 
   List<PieChartSectionData> showingSections() {
-
-
-    return List.generate(4, (i) {
+    return List.generate(6, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 20.0 : 16.0;
       final radius = isTouched ? 110.0 : 100.0;
@@ -66,7 +109,7 @@ class ReportScreenState extends State {
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: TitoColors.purple,
+            color: categories[0].color,
             value: 40,
             title: '40%',
             radius: radius,
@@ -75,15 +118,15 @@ class ReportScreenState extends State {
                 fontWeight: FontWeight.bold,
                 color: const Color(0xffffffff)),
             badgeWidget: _Badge(
-              'assets/ophthalmology-svgrepo-com.svg',
+              categories[0].imageUrl,
               size: widgetSize,
-              borderColor: TitoColors.purple,
+              borderColor: categories[0].color,
             ),
             badgePositionPercentageOffset: .98,
           );
         case 1:
           return PieChartSectionData(
-            color: TitoColors.yellow,
+            color: categories[1].color,
             value: 30,
             title: '30%',
             radius: radius,
@@ -92,15 +135,15 @@ class ReportScreenState extends State {
                 fontWeight: FontWeight.bold,
                 color: const Color(0xffffffff)),
             badgeWidget: _Badge(
-              'assets/librarian-svgrepo-com.svg',
+              categories[0].imageUrl,
               size: widgetSize,
-              borderColor: TitoColors.yellow,
+              borderColor: categories[0].color,
             ),
             badgePositionPercentageOffset: .98,
           );
         case 2:
           return PieChartSectionData(
-            color:TitoColors.green,
+            color: categories[2].color,
             value: 16,
             title: '16%',
             radius: radius,
@@ -109,15 +152,15 @@ class ReportScreenState extends State {
                 fontWeight: FontWeight.bold,
                 color: const Color(0xffffffff)),
             badgeWidget: _Badge(
-              'assets/fitness-svgrepo-com.svg',
+              categories[2].imageUrl,
               size: widgetSize,
-              borderColor: TitoColors.green,
+              borderColor: categories[2].color,
             ),
             badgePositionPercentageOffset: .98,
           );
         case 3:
           return PieChartSectionData(
-            color: TitoColors.pink,
+            color: categories[3].color,
             value: 15,
             title: '15%',
             radius: radius,
@@ -126,12 +169,65 @@ class ReportScreenState extends State {
                 fontWeight: FontWeight.bold,
                 color: const Color(0xffffffff)),
             badgeWidget: _Badge(
-              'assets/worker-svgrepo-com.svg',
+              categories[3].imageUrl,
               size: widgetSize,
-              borderColor: TitoColors.pink,
+              borderColor: categories[3].color,
             ),
             badgePositionPercentageOffset: .98,
           );
+        case 4:
+          return PieChartSectionData(
+            color: categories[4].color,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffffff)),
+            badgeWidget: _Badge(
+              categories[4].imageUrl,
+              size: widgetSize,
+              borderColor: categories[4].color,
+            ),
+            badgePositionPercentageOffset: .98,
+          );
+        case 5:
+          return PieChartSectionData(
+            color: categories[5].color,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffffff)),
+            badgeWidget: _Badge(
+              categories[5].imageUrl,
+              size: widgetSize,
+              borderColor: categories[5].color,
+            ),
+            badgePositionPercentageOffset: .98,
+          );
+        case 6:
+          return PieChartSectionData(
+            color: categories[6].color,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffffff)),
+            badgeWidget: _Badge(
+              categories[6].imageUrl,
+              size: widgetSize,
+              borderColor: categories[6].color,
+            ),
+            badgePositionPercentageOffset: .98,
+          );
+
+
         default:
           throw 'Oh no';
       }
@@ -140,12 +236,12 @@ class ReportScreenState extends State {
 }
 
 class _Badge extends StatelessWidget {
-  final String svgAsset;
+  final String imagePath;
   final double size;
   final Color borderColor;
 
   const _Badge(
-    this.svgAsset, {
+    this.imagePath, {
     Key? key,
     required this.size,
     required this.borderColor,
@@ -174,9 +270,14 @@ class _Badge extends StatelessWidget {
       ),
       padding: EdgeInsets.all(size * .15),
       child: Center(
-        child: SvgPicture.asset(
-          svgAsset,
-          fit: BoxFit.contain,
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                imagePath,
+              )
+            )
+          ),
         ),
       ),
     );
